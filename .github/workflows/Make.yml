@@ -22,7 +22,7 @@ on:
       DEVICE_BRANCH:
         description: 'DEVICE_BRANCH'
         required: true
-        default: 'Android-11'
+        default: 'Android-11-test'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -45,6 +45,7 @@ jobs:
       uses: easimon/maximize-build-space@master
       with:
         root-reserve-mb: 1024
+        swap-size-mb: 1024
         remove-dotnet: 'true'
         temp-reserve-mb: 1024
         remove-android: 'true'
