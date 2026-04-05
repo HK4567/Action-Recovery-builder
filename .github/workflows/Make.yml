@@ -38,19 +38,18 @@ env:
 jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     
     steps:
-    - name: Maximize build disk space
-      uses: easimon/maximize-build-space@master
+    - name: Maximize GitHub Runner Space
+      uses: justinthelaw/maximize-github-runner-space@v0.8.0
       with:
-        root-reserve-mb: 1024
-        swap-size-mb: 1024
-        remove-dotnet: 'true'
-        temp-reserve-mb: 1024
-        remove-android: 'true'
-        remove-haskell: 'true'
-
+        cleanup-profile: custom
+        remove-android: "true"
+        remove-codeql: "true"
+        remove-cached-tools: "true"
+        remove-docker-images: "true"
+    
     - name: Check Out
       uses: actions/checkout@main
 
